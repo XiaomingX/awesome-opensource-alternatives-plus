@@ -1,15 +1,15 @@
 """
-This script adds company directly to the list
+本脚本用于将公司信息直接添加到列表中
 """
-# import yaml
+import os
 
-
+# 工具函数模块
 def get_repo_from_url(url):
     """
-    Given a url, return the repository name.
+    根据 GitHub 地址提取仓库名称。
 
-    :param url: the url of the repo
-    :return: The repo name.
+    :param url: GitHub 仓库地址
+    :return: 仓库名称
     """
     idx = url.find(".com/")
     return url[idx + len(".com/") :].strip("/")
@@ -17,13 +17,11 @@ def get_repo_from_url(url):
 
 def create_alternatives_md(names, links):
     """
-    Create a markdown string of the form:
+    生成替代产品的 Markdown 字符串。
 
-    [name1](link1), [name2](link2), ...
-
-    :param names: A list of alternative names for the image
-    :param links: A list of links to the alternative versions of the file
-    :return: A string of the form:
+    :param names: 替代产品的名称列表
+    :param links: 替代产品的链接列表
+    :return: Markdown 格式的字符串
     """
     return ", ".join(
         (f"""[{name.strip()}]({link.strip()})""" for name, link in zip(names, links))
@@ -31,15 +29,21 @@ def create_alternatives_md(names, links):
 
 
 def create_shield_link(gh_link):
-    return "https://img.shields.io/github/stars/{repo}?style=social".format(
-        repo=get_repo_from_url(gh_link)
-    ).strip()
+    """
+    根据 GitHub 地址生成显示星标数量的徽章链接。
+
+    :param gh_link: GitHub 仓库地址
+    :return: 徽章链接
+    """
+    return f"https://img.shields.io/github/stars/{get_repo_from_url(gh_link)}?style=social"
 
 
-def create_new_line(
-    category, company_name, description, link, gh_link, alts_names, alts_links
-):
+def create_new_line(category, company_name, description, link, gh_link, alts_names, alts_links):
+    """
+    创建表格中的新行。
 
+    :return: Markdown 格式的新行字符串
+    """
     return "{}|{}|{}|{}|{}|\n".format(
         category.strip(),
         f"[{company_name.strip()}]({link.strip()})",
@@ -48,115 +52,95 @@ def create_new_line(
         create_alternatives_md(alts_names, alts_links),
     )
 
+# 数据处理模块
+def add_new_company(category, company_name, description, link, gh_link, alts_names, alts_links):
+    """
+    将新公司信息添加到 README 文件的表格中。
 
-def add_new_company(
-    category, company_name, description, link, gh_link, alts_names, alts_links
-):
+    :return: 操作结果字符串
+    """
+    readme_path = "README.md"
 
-    with open("README.md", "r", encoding="utf-8") as f:
-        all = f.readlines()
+    if not os.path.exists(readme_path):
+        return f"错误: {readme_path} 文件不存在。"
+
+    with open(readme_path, "r", encoding="utf-8") as f:
+        all_lines = f.readlines()
 
     table_start = "|Category|Company|Description|GitHub Stars|Alternative to|\n"
     table_end = "<!-- END STARTUP LIST -->\n"
 
-    idx = all.index(table_start)
-    idx_end = all.index(table_end)
+    try:
+        idx = all_lines.index(table_start)
+        idx_end = all_lines.index(table_end)
+    except ValueError:
+        return "表格结构不完整，请检查 README 文件。"
 
+    # 提取现有分类和公司名
     find_name = lambda x: x[x.index("[") + 1 : x.index("]")].strip()
     find_cat = lambda x: x[: x.index("|")].strip()
+    categories = [(find_cat(line), find_name(line)) for line in all_lines[idx + 2 : idx_end - 1]]
 
-    categories = [(find_cat(x), find_name(x)) for x in all[idx + 2 : idx_end - 1]]
-
+    # 检查是否已存在
     search_tup = (category.strip(), company_name.strip())
+    if search_tup in categories:
+        return "该条目已存在。"
 
-    insert_idx = -1
-
-    for i, tup in enumerate(reversed(categories)):
-        if search_tup == tup:
-            return "This entry already exists"
-        elif search_tup > tup:
-            print(search_tup, tup)
-            insert_idx = len(categories) - i
-            break
-
-    all.insert(
+    # 找到插入位置
+    insert_idx = next(
+        (i for i, tup in enumerate(reversed(categories)) if search_tup > tup),
+        len(categories),
+    )
+    all_lines.insert(
         insert_idx + idx + 2,
-        create_new_line(
-            category, company_name, description, link, gh_link, alts_names, alts_links
-        ),
+        create_new_line(category, company_name, description, link, gh_link, alts_names, alts_links),
     )
 
-    # file_name = "_".join(company_name.split(" "))
-    # with open(f"submissions/{file_name}.yaml", "w") as file:
-    #     yaml.dump(
-    #         dict(
-    #             category=category,
-    #             company_name=company_name,
-    #             description=description,
-    #             link=link,
-    #             gh_link=gh_link,
-    #             alts_names=alts_names,
-    #             alts_links=alts_links,
-    #         ),
-    #         file,
-    #         default_flow_style=False,
-    #     )
+    # 写回文件
+    with open(readme_path, "w", encoding="utf-8") as f:
+        f.writelines(all_lines)
 
-    with open("README.md", "w", encoding="utf-8") as f:
-        f.writelines(all)
+    return "成功添加新公司信息！"
 
-    return "ok, added!"
+# 交互模块
+def get_user_input(prompt, split=False):
+    """
+    获取用户输入。
+
+    :param prompt: 输入提示文字
+    :param split: 是否以逗号分隔输入
+    :return: 用户输入的字符串或列表
+    """
+    response = input(prompt)
+    return response.split(",") if split else response.strip()
+
+
+def collect_company_info():
+    """
+    从用户输入中收集公司信息。
+
+    :return: 公司信息字典
+    """
+    print("请依次输入以下公司信息：")
+    company_info = {
+        "company_name": get_user_input("1. 公司名称 (如 Metabase): "),
+        "category": get_user_input("2. 公司类别 (如 Business Intelligence): "),
+        "description": get_user_input("3. 公司简介 (一行简单描述): "),
+        "link": get_user_input("4. 公司官网链接 (如 https://www.metabase.com/): "),
+        "gh_link": get_user_input("5. GitHub 仓库链接 (如 https://github.com/metabase/metabase): "),
+        "alts_names": get_user_input("6. 替代产品名称 (以逗号分隔): ", split=True),
+        "alts_links": get_user_input("7. 替代产品链接 (以逗号分隔): ", split=True),
+    }
+    return company_info
 
 
 def add_company_from_command_line():
-    count = 0
-    args = dict()
-
-    while True:
-        if count == 0:
-            args["company_name"] = input("Enter the company name.\n(e.g Metabase)\n: ")
-            print("-" * 100)
-            count += 1
-        elif count == 1:
-            args["category"] = input(
-                "Enter category of the company. May be an existing or a new one.\n(e.g Business Intelligence)\n: "
-            )
-            print("-" * 100)
-            count += 1
-        elif count == 2:
-            args["description"] = input(
-                "Description of the company.\nKeep it short and simple (use one line)\n: "
-            )
-            print("-" * 100)
-            count += 1
-        elif count == 3:
-            args["link"] = input(
-                """Url to the company's website.\n(e.g https://www.metabase.com/)\n: """
-            )
-            print("-" * 100)
-            count += 1
-        elif count == 4:
-            args["gh_link"] = input(
-                """"Url of the product's github repo.\n(e.g https://github.com/metabase/metabase)\n: """
-            )
-            print("-" * 100)
-            count += 1
-        elif count == 5:
-            args["alts_names"] = input(
-                """Names of the company's well-known SaaS competitors.\n(e.g for Metabase: PowerBI, DataStudio, Tableau)\n: """
-            ).split(",")
-            print("-" * 100)
-            count += 1
-        elif count == 6:
-            args["alts_links"] = input(
-                "Links to the corresponding SaaS competitors.\n(e.g for Metabase: https://powerbi.microsoft.com/, https://datastudio.google.com/, https://www.tableau.com/)\n: "
-            ).split(",")
-            print("-" * 100)
-            count += 1
-        else:
-            result = add_new_company(**args)
-            print(result)
-            break
+    """
+    从命令行获取信息并添加公司。
+    """
+    company_info = collect_company_info()
+    result = add_new_company(**company_info)
+    print(result)
 
 
 if __name__ == "__main__":

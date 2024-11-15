@@ -1,31 +1,20 @@
-# Awesome open-source alternatives to SaaS
-[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# 开源替代方案合集
 
-Awesome list of open-source startup alternatives to established SaaS products. Maintained by folks at [![Runa Capital](https://img.shields.io/static/v1?label=&message=%20&style=social&logoWidth=50&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD8AAAAUCAYAAAA6NOUqAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAUpSURBVHgBtVhNUuNGFH7d/gkzmSrEKjGzGPkEmKpAUtkgdkBSBTkB4gSYE9icAHMCzAniqWI8kxXKJsXAVGFOgLLBZDWeRSapBNTpT/2EZCEbmcl8VV2S+v97f/1agnLi0qlZU1PldZLCIaUcIZSlSFhoU4p6+rsX3MrO81/evqTHY0kXVxebvwe6dHQ5pM8A8VCH/krNJllq6I4bEdmxUOTr0qy8OZ10w+tkiPq67JAhvklGGI4uv9L/jLHkr9cWtvWjmYt0Gkp5Sty4s93z3ycYda5LT5etRN2lLh7XRfsY8BPf07ok15jTpcZ9eok2i9usqL6YsYHQxJ88LR5o0hv3GoXwVAAzDy7CT0nTKpB6MeWm+jlClTw913zV6w0oH9L9bN7sgAlBOG2KhQPluLpU+b3JfT0y1kLcZvPYCJiznkn+iyflY2UWYx5qoJRoUVkeVjonftaY/sp3u0IGe3pcLDBB9tSzYo03kxfY2Hq0QSbTIqPB3phxdR4zw9+RG70g40pVioX7sy6OTM9wvbqwJ0RMXCnV+uvPL6uV7unuKOJA5c2Jf0Nq91790TuPJgPWdsloGGQcik13nAWl187qC+to8LzWEPn+ymJDCQEJhtomKZdnX5/tVD0vl9kWSTWGa0SbJoeny09ktI1NfqBPB6zgPRnzhyDBJyZvonroM4AfqFKtcnTi5ZkZMQIWo0gOxQhFhSY9Hvv8TAo0KybkARQKF8Ap0ibjBlbs86J8zG++oqIz2/0tNDUT/EqbOMsrr8+Gjpurte9fiOAfV0hRT58IilQ9muOR8HnTsACQhln3uA5tNYqj+kPwyLhSg8c4GBceddrcN7XW23iXkmpfHZ1emHptDRCKSEhYhQtTMslJAu4S6HN+tnu2T5MDSY6g4QBpUxy8IMxNroMiYMoz3N9mUm0eh71t8LgoZ0DdRTTOkF9dvDQEg2al+253JPGHgGNQFdykxjGPEuU9Ev/WJzzzPztkqHVD0I+Im5ZSIzdxTRrBsfLq7XLa1GWxPC2lToep5IdrjQc0A9M80GWPzDGVF0hglnL2hSWdS71xN/wUd8EuhJSiFUb8bOi+aqtAav7vj09nQHpUcIQLqVtzgiipWoghNBogjHYEpknTY4fiAIjn+pi+UJAlrn9YeK8TmIE+x6vpHn/8uDinkKaqlG+Hfq/cdAAch/7qt9qFlJN0rRSwBlLZmVQ9NOpyO/wXFydoeIPrPDKCsslYCnwa2ZxPJuPDHhvcjoC5z+/HOOraARnNpAGtCZ2m8kQx4A7a1PtrCwdXa/O5TFNnfyY7M/NlYY6yM7gPTA6lxXUd7gshYu+I4NElKEpv0Q5BREFun9vvXEN+/eps53l39DU0jPyBXBaZGxMu8vf+yjeNcUIIg16QcU+4T3KUS4AYzNjm7yjy+2T2BcF5if6oH1B8DGJv2zx/NAdl5vZpIHXVj/n+2mJDx4H6kBuEViCbgmTzanWxIxR1pM4JbgvFQeH2xgpEsGHyAEMMl6IRy/gUm24yaCIP32KSbsY4K9U/jW1+Yo6DZEMu8hGQ3+sLzCFJpLGpWxzBorUf6hLgnW4oKKBW6hBxB59EqTViemipSUaDbYp9fMAE0sEX1gATrvGYZKSPkiGPxzkUJzidaD1Bj4QWgk2FYAmmjz87Dw7IyAFGwOJN+hTHGpvfo+stNHjI7z4N3++jd4eMEAY8PqqPnvajySdx6ThW+dlHRwba94SweTEd3JHtCV8UxMu894SciMh79An4D/op5DM7HoOhAAAAAElFTkSuQmCC)](https://runacap.com) 
+## 入选标准
+一家公司会被添加到该列表中，如果：
+1. 它的产品主要基于一个开源项目
+2. 它有一个知名的闭源竞争对手，且解决相似的商业问题
+3. 它是最近10年成立的盈利性私营公司
+4. 它的GitHub仓库有100个以上的星标
 
-Also checkout our [ROSS index](https://runacap.com/ross-index/): fastest-growing open-source startups, every quarter.
+创业公司更新换代很快，因此这个列表可能并不完全或100%最新。欢迎[贡献](.github/CONTRIBUTING.md)，一起丰富这个列表。
 
-## Criteria
-Open-source company is added to the list if: 
-1. Its product is strongly based on an open-source repo 
-2. It has a well-known closed-source competitor, solving a similar business problem
-3. It is a private for-profit company, founded in the last 10 years
-4. Its repo has 100+ stars on GitHub
+有问题或建议？可以直接私信项目维护人 [@seclink](https://x.com/seclink)
 
-Things change really fast in the startup world, so this list can neither be fully complete, nor 100% up to date.
+## 公司列表
 
-Don't hesitate to [contribute](.github/CONTRIBUTING.md) and add new startups. Let's build the most comprehensive list together.
-
-Any questions or suggestions? Feel free to DM project maintainer [@garrrikkotua](https://twitter.com/garrrikkotua)
-
---------------------
-
-## Startup List
-
-All startups in the list are sorted by categories and sorted in alphabetical order. If you click on the stars badge you will get to the product's repo. 
-**Have a good search!**
-
-<!-- BEGIN STARTUP LIST -->
+列表中的公司按类别和字母顺序排列。点击星标可以进入该产品的GitHub仓库。  
+**祝您找到合适的项目！**
 
 |Category|Company|Description|GitHub Stars|Alternative to|
 |:-------|:------|:----------|:----------:|:------------:|
@@ -240,7 +229,6 @@ Workflow automation|[N8N](https://n8n.io/)|Node-based workflow automation tool f
 Workflow automation|[Pipedream](https://pipedream.com/)|Workflow automation and API integration platform|<a href=https://github.com/PipedreamHQ/pipedream><img src="https://img.shields.io/github/stars/PipedreamHQ/pipedream?style=social" width=150/></a>|[Zapier](https://zapier.com/), [Integromat](https://www.integromat.com/)|
 Workflow automation|[Temporal](https://temporal.io/)|Workflows as code platform|<a href=https://github.com/temporalio/temporal><img src="https://img.shields.io/github/stars/temporalio/temporal?style=social" width=150/></a>|[Zapier](https://zapier.com/)
 
-<!-- END STARTUP LIST -->
 
-## Useful Links
-- Great [article](https://rajko-rad.medium.com/the-rise-of-open-source-challengers-4a3d93932425) on open-source challengers by Rajko Radovanovic
+## 实用链接
+- Rajko Radovanovic 的一篇关于开源挑战者的[精彩文章](https://rajko-rad.medium.com/the-rise-of-open-source-challengers-4a3d93932425)
