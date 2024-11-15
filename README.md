@@ -9,7 +9,7 @@
 
 创业公司更新换代很快，因此这个列表可能并不完全或100%最新。欢迎[贡献](.github/CONTRIBUTING.md)，一起丰富这个列表。
 
-有问题或建议？可以直接私信项目维护人 [@seclink](https://x.com/seclink)
+有问题或建议？可以直接私信项目维护人 [@seclink](https://twitter.com/seclink)
 
 ## 公司列表
 

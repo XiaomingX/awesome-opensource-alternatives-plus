@@ -16,8 +16,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "RunaCapital", // Usually your GitHub org/user name.
-  projectName: "awesome-oss-atlernatives", // Usually your repo name.
+  organizationName: "XiaomingX", // Usually your GitHub org/user name.
+  projectName: "awesome-oss-atlernatives-plus", // Usually your repo name.
   trailingSlash: false,
 
   // Even if you don't use internalization, you can use this field to set useful
@@ -38,14 +38,14 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            "https://github.com/RunaCapital/awesome-oss-alternatives/tree/main/website/docs/",
+            "https://github.com/XiaomingX/awesome-oss-alternatives-plus/tree/main/website/docs/",
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            "https://github.com/RunaCapital/awesome-oss-alternatives/tree/main/website/blog/",
+            "https://github.com/XiaomingX/awesome-oss-alternatives-plus/tree/main/website/blog/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -73,7 +73,7 @@ const config = {
           { to: "/about", label: "About", position: "left" },
           { to: "/blog", label: "Blog", position: "left" },
           {
-            href: "https://github.com/RunaCapital/awesome-oss-alternatives",
+            href: "https://github.com/XiaomingX/awesome-oss-alternatives-plus",
             label: "GitHub",
             position: "right",
           },
