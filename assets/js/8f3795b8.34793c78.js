@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunk=globalThis.webpackChunk||[]).push([[7155],{5677(a){a.exports=JSON.parse('{"label":"facebook","permalink":"/awesome-oss-alternatives/blog/tags/facebook","allTagsPath":"/awesome-oss-alternatives/blog/tags","count":1}')}}]);
