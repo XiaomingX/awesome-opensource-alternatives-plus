@@ -16,16 +16,21 @@ jobs:
         working-directory: website
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 12
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
-          cache: npm
-          cache-dependency-path: ./website/package-lock.json
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: ./website/pnpm-lock.yaml
 
       - name: Install dependencies
-        run: npm install
+        run: pnpm install --frozen-lockfile
       - name: Build website
-        run: npm run build
+        env:
+          NODE_OPTIONS: --openssl-legacy-provider
+        run: pnpm build
 
       # Popular action to deploy to GitHub Pages:
       # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
